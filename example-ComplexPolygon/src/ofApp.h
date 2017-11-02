@@ -21,7 +21,7 @@ public:
 
 	// little helper function to load
 	// point that we saved
-	std::vector<ofDefaultVertexType> loadPoints(const std::string& file);
+	std::vector<ofVec3f> loadPoints(const std::string& file);
 
 	bool                                  breakupIntoTriangles;
 	ofPolyline                            shape;

@@ -31,13 +31,13 @@ void ofApp::setup() {
 }
 
 //--------------------------------------------------------------
-vector <ofDefaultVertexType> ofApp::loadPoints(const std::string& file) {
-	vector <ofDefaultVertexType> pts;
+vector <ofVec3f> ofApp::loadPoints(const std::string& file) {
+	vector <ofVec3f> pts;
 	vector <string>  ptsStr = ofSplitString(ofBufferFromFile(file).getText(), ",");
 	for(int i=0; i<ptsStr.size(); i+=2) {
 		float x = ofToFloat(ptsStr[i]);
 		float y = ofToFloat(ptsStr[i+1]);
-		pts.push_back(ofDefaultVertexType(x, y, 0));
+		pts.push_back(ofVec3f(x, y, 0));
 	}
 	return pts;
 }
@@ -157,13 +157,13 @@ void ofApp::mouseReleased(int x, int y, int button) {
 		for(int i=0; i<tris.size(); i++) {
 
 			auto triangle = std::make_shared<ofxBox2dPolygon>();
-			triangle->addTriangle(ofDefaultVertexType(tris[i].a.x,
+			triangle->addTriangle(ofVec3f(tris[i].a.x,
 																								tris[i].a.y,
 																								0),
-														ofDefaultVertexType(tris[i].b.x,
+														ofVec3f(tris[i].b.x,
 																								tris[i].b.y,
 																								0),
-														ofDefaultVertexType(tris[i].c.x,
+														ofVec3f(tris[i].c.x,
 																								tris[i].c.y,
 																								0));
 			triangle->setPhysics(1.0, 0.3, 0.3);
